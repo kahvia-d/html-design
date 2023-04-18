@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我将以高达形态出击</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+    <div id="screen">
+        <div id="card" class="anime">
+            <div class="container" id="font">
+                <h2>G U N D A</h2>
+                <div class="username">
+                    <input type="text">
+                </div>
+                <div class="password">
+                    <input type="password">
+                </div>
+                <div class="submit">
+                    <button>Link Start</button>
+                </div>
+            </div>
+            <div class="container" id="back">
+                <h2>R E G I S T E R</h2>
+                <div class="username">
+                    <input type="text">
+                </div>
+                <div class="password">
+                    <input type="password">
+                </div>
+                <div class="submit">
+                    <button>Commit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+    const card = document.getElementById("card");
+    const buttons = document.getElementsByTagName("button");
+    var loading = false;
+    for (var i = 0; i < buttons.length; i++) {
+        var flag = true;
+        buttons[i].onclick = function () {
+            if (!loading) {
+                if (flag) {
+                    card.className = "animation";
+                    setTimeout(function () {
+                        loading = false;
+                    }, 1000)
+                    flag = false;
+                    loading = true;
+                } else {
+                    card.className = "animation-reverse"
+                    setTimeout(function () {
+                        loading = false;
+                    }, 1000)
+                    flag = true;
+                    loading = true;
+                }
+            }
+
+
+        };
+    }
+</script>
+
+</html>
