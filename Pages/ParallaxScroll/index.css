@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* 隐藏设置100vw时出现的x轴滚动条 */
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    border: 1px solid white;
+    padding: 7px 10px;
+    border-radius: 5px;
+}
+
+/* 每一项item占视窗百分百高度，内容按列居中显示 */
+.item {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 将item的背景图片单独作为一个绝对定位盒子，
+这样才能为背景图片设置遮罩 */
+.item .back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 视差滚动的关键属性，固定背景图片不滚动 */
+    background-attachment: fixed;
+}
+
+.item .back::after {
+    content: '';
+    background-color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* 为每一个item单独设置背景图片 */
+#item1 .back {
+
+    background-image: url('pics/ShenHe.jpg');
+}
+
+#item2 .back {
+    background-image: url('pics/QianXun.jpg');
+}
+
+#item3 .back {
+    background-image: url('pics/LingHua.jpg');
+}
+
+/* 
+描述内容盒子占据百分百宽度，百分之五十高度，设置背景阴影，逆时针倾斜8°，
+内容居中显示 
+*/
+.discription {
+    width: 100%;
+    height: 50%;
+    background-color: rgba(0, 0, 0, 0.3);
+    transform: skew(0, -8deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 
+描述内容设置最大宽度，内容居中，内容顺时针倾斜8°，即，将内容摆正。
+*/
+.dicriptionContent {
+    max-width: 50vw;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: skew(0, 8deg);
+}
+
+/* 
+按钮盒子固定宽度，并使内容居于末尾
+*/
+.discription .detailButton {
+    width: 30vw;
+    display: flex;
+    justify-content: end;
+}
+
+
+.name {
+    font-weight: bold;
+    font-size: xx-large;
+    color: white;
+}
+
+.content {
+    color: white;
+    margin: 20px 0 30px 0;
+}
