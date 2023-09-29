@@ -1,0 +1,194 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --black: #333;
+    --white: #fff;
+}
+
+.dark {
+    --white: #333;
+    --black: #fff;
+}
+
+header {
+    position: absolute;
+    width: 100%;
+    padding: 10px 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+.title {
+    color: var(--black);
+}
+
+.buttons {
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons ion-icon:nth-child(2) {
+    display: none;
+}
+
+.buttons.active ion-icon:nth-child(1) {
+    display: none;
+}
+
+.buttons.active ion-icon:nth-child(2) {
+    display: block;
+}
+
+.rightBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    color: var(--black);
+}
+
+.main {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+
+.backVideo,
+.mask,
+.coverText,
+.menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.backVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.mask {
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    /* mix-blend-mode是控制元素和背景混合要点 */
+    mix-blend-mode: screen;
+    user-select: none;
+}
+
+.coverText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    color: white;
+    font-weight: bold;
+    font-size: 3rem;
+    letter-spacing: 0.5rem;
+}
+
+.menu {
+    left: -100%;
+    z-index: 4;
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+}
+
+.menu.active {
+    left: 0;
+}
+
+.menu ul {
+    list-style: none;
+    color: var(--black);
+}
+
+.menu ul li {
+    height: 80px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+    border-radius: 80px;
+    cursor: pointer;
+}
+
+.menu ul li:hover {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+body.active {
+    background-color: var(--black);
+}
+
+.dark .mask {
+    /* filter invert可以使得颜色反转，使得遮罩的黑变白，白变黑 */
+    filter: invert(1);
+    /* 再改变混合模式就可以实现遮罩的背景色切换 */
+    mix-blend-mode: multiply;
+}
+
+.discription {
+    position: absolute;
+    bottom: 100px;
+    left: 130px;
+    color: var(--black);
+    font-size: 1.3rem;
+    z-index: 3;
+}
+
+.subscribes {
+    position: absolute;
+    bottom: 100px;
+    right: 130px;
+    color: var(--black);
+    font-size: 1.3rem;
+    z-index: 3;
+}
+
+.subscribes ul {
+    list-style: none;
+}
+
+.subscribes li {
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.subscribes ion-icon {
+    font-size: 1.8rem;
+}
+
+.subscribes span {
+    margin-left: 5px;
+    opacity: 0;
+    transition: 0.5s;
+    cursor: default;
+}
+
+/* 改变兄弟元素使用加号 */
+.subscribes ion-icon:hover+span {
+    opacity: 1;
+}

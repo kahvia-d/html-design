@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Home</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+<body>
+    <div id="theme"></div>
+    <header>
+        <h2 class="title">Video Home</h2>
+
+        <div class="rightBar">
+            <div class="buttons themesToggler">
+                <ion-icon name="sunny-outline"></ion-icon>
+                <ion-icon name="moon-outline"></ion-icon>
+            </div>
+            <div class="buttons menuDrawer">
+                <ion-icon name="menu-outline"></ion-icon>
+                <ion-icon name="close-outline"></ion-icon>
+            </div>
+        </div>
+    </header>
+    <section class="main">
+        <video src="wind.mp4" class="backVideo" autoplay muted loop></video>
+        <img src="mask.jpg" class="mask">
+        <div class="coverText">WIND</div>
+        <div class="menu">
+            <ul>
+                <li>Home</li>
+                <li>About</li>
+                <li>Link</li>
+                <li>Share</li>
+                <li>Donate</li>
+            </ul>
+        </div>
+        <div class="discription">
+            @ Kahvia - 2023
+        </div>
+        <div class="subscribes">
+            <ul>
+                <li><ion-icon name="logo-github"></ion-icon><span>Github</span></li>
+                <li><ion-icon name="logo-youtube"></ion-icon><span>Youtube</span></li>
+                <li><ion-icon name="logo-wechat"></ion-icon><span>Wechat</span></li>
+            </ul>
+        </div>
+    </section>
+</body>
+
+<script>
+    let body = document.querySelector('body')
+    let theme = document.querySelector('#theme')
+    let themesToggler = document.querySelector('.themesToggler')
+    let menuDrawer = document.querySelector('.menuDrawer')
+    let menu = document.querySelector(".menu")
+
+    //通过按钮控制各部分的激活
+    themesToggler.onclick = function () {
+        //dark主题切换的要点是，将css自定义属性置反，这样各处引用的颜色名不变，实际颜色值改变
+        body.classList.toggle('dark')
+        themesToggler.classList.toggle('active')
+        theme.classList.toggle('active')
+    }
+    menuDrawer.onclick = function () {
+        menuDrawer.classList.toggle('active')
+        menu.classList.toggle('active')
+    }
+
+    // 注：通过active控制图标的切换.在active前，显示第一个元素隐藏第二个元素，在active后，显示第二个元素，隐藏第一个元素。
+    //这样通过active类的有无即可实现状态转换
+</script>
+
+</html>
